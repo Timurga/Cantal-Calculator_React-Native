@@ -1,0 +1,137 @@
+/* Другое */
+.scrollView {
+    flex-direction: column;
+    background-color: #198c4f;
+    padding-top: 100px;
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.switchInput {
+    border-radius: 1px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+.separator {
+    height: 100%;
+    width: 1px;
+    border-right-width: 1px;
+    border-right-color: #92C46D;
+}
+
+.formulaSelectIcon {
+    margin-bottom: 20px;
+}
+
+/* Стили контейнеров */
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 0 25px;
+}
+
+.titleContainer {
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 30;
+}
+
+.mainContainer {
+    border-radius: 20px;
+    background-color: #E9F4DF;
+    padding: 25px 0;
+}
+
+.emptyMainContainer {
+    height: 220%;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputsRowContainer {
+    height: 40px;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.textInputContainer {
+    width: 45%;
+}
+
+.radioButtonContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 150px;
+    margin-top: 6px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.formulaSelectContainer {
+    justify-content: space-between;
+    flex-direction: row;
+    border: 1px #92C46D solid;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.formulaSelectItem {
+    width: 50%;
+    padding: 20px;
+}
+
+.calculateButton {
+    align-items: center;
+    padding: 25px 0;
+    margin-top: 50px;
+    background-color: #198C4F;
+    border: 1px solid #198C4F;
+    border-radius: 10px;
+}
+
+/* Стили текстов */
+.titleText {
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.subtitleText {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 300;
+    margin-top: 40px;
+}
+
+.containerText {
+    font-size: 14px;
+    color: #0B4028;
+}
+
+.buttonText {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.formulasEmptyText {
+    width: 147px;
+    margin-top: 30px;
+    font-size: 16px;
+    color: #0B4028;
+}
+
+.radioButtonText {
+    text-align: center;
+    font-size: 16px;
+    width: 67.5px;
+    height: 40px;
+    padding: 9px;
+}
