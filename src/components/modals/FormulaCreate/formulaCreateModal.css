@@ -20,10 +20,12 @@
     justify-content: space-between;
 }
 
-.modalTitleText {
+.modalFormulaName {
+    height: 50px;
+    width: 250px;
     font-size: 22px;
     font-weight: 600;
-    padding-top: 5px;
+    background-color: #E9F4DF;
 }
 
 .textStyle {
@@ -42,7 +44,7 @@
 }
 
 .separator {
-    margin-top: 40px;
+    margin-top: 20px;
     width: 100%;
     border: 0.5px solid #92C46D;
 }
@@ -52,20 +54,37 @@
 }
 
 .constructorKeyboard {
+    width: 100%;
     margin-top: 40px;
-    height: 325px;
-    flex-direction: row;
+    height: 280px;
     flex-wrap: wrap;
-    justify-content: space-evenly;
 }
 
-.constructorKeyboardButton {
+.constructorKeyboard_line {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.constructorKeyboardButton_small {
     align-items: center;
     justify-content: center;
+    flex-basis: 60px;
 
-    min-width: 74px;
+    min-width: 24%;
     height: 60px;
-    margin-bottom: 10px;
+    
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.constructorKeyboardButton_large {
+    align-items: center;
+    justify-content: center;
+    flex-basis: 60px;
+
+    min-width: 49%;
+    height: 60px;
     
     background-color: #fff;
     border-radius: 10px;
@@ -73,4 +92,5 @@
 
 .keyboardButtonText {
     font-size: 18px;
+    font-weight: 500;
 }

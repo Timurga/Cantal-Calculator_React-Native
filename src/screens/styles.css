@@ -89,6 +89,7 @@
 }
 
 .calculateButton {
+    width: 100%;
     align-items: center;
     padding: 25px 0;
     margin-top: 50px;

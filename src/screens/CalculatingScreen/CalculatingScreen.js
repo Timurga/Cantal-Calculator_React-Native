@@ -8,7 +8,8 @@ import CalculatingScreenRadio from './CalculatingScreenRadio';
 import BurgerMenuSVG from '../../components/SVG/BurgerMenuSVG';
 import PlusSVG from '../../components/SVG/PlusSVG';
 import CalculatingScreenFormulaSelect from './CalculatingScreenFormulaSelect';
-import FormulaCreate from '../../components/modals/FormulaCreate/FormulaCreate';
+import FormulaCreate from '../../components/modals/FormulaCreate/FormulaCreateModal';
+import FormulasListModal from '../../components/modals/FormulasListModal/FormulasListModal';
 
 
 const CalculatingScreen = () => {
@@ -16,14 +17,20 @@ const CalculatingScreen = () => {
     const [fat, setFat] = useState();
     const [protein, setProtein] = useState();
     const [type, setType] = useState(false);
-    const [modalVisible, setModalVisible] = useState(false)
-    const onClose = () => {
-        setModalVisible(false)
+    const [createModalVisible, setCreateModalVisible] = useState(false)
+    const [listModalVisible, setListModalVisible] = useState(false)
+    const onCloseCreateModal = () => {
+        setCreateModalVisible(false)
+    }
+
+    const onCloseListModal = () => {
+        setListModalVisible(false)
     }
 
     return (
         <ScrollView style={styles.scrollView} keyboardDismissMode='on-drag'>
-            <FormulaCreate visible={modalVisible} onClose={onClose}/>
+            <FormulaCreate visible={createModalVisible} onClose={onCloseCreateModal}/>
+            <FormulasListModal visible={listModalVisible} onClose={onCloseListModal}/>
             <BackgroundSVG style={styles.backgroundImage} />
             <View style={styles.container}>
                 <View style={styles.titleContainer}>
@@ -46,6 +53,7 @@ const CalculatingScreen = () => {
 
                     <View style={styles.formulaSelectContainer}>
                         <CalculatingScreenFormulaSelect
+                            onPress={() => setListModalVisible(!listModalVisible)}
                             SVG={<BurgerMenuSVG style={styles.formulaSelectIcon} />}
                         >
                             Выбрать                из готовых
@@ -54,7 +62,7 @@ const CalculatingScreen = () => {
                         <View style={styles.separator}></View>
 
                         <CalculatingScreenFormulaSelect
-                            onPress={() => setModalVisible(!modalVisible)}
+                            onPress={() => setCreateModalVisible(!createModalVisible)}
                             SVG={<PlusSVG style={styles.formulaSelectIcon} />}
                         >
                             Создать новую
