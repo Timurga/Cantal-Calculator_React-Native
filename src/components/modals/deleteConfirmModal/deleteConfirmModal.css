@@ -1,0 +1,81 @@
+.backgroundOpacity {
+    height: 100%;
+    background-color: #00000091;
+}
+
+.modalView {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 30px;
+    align-items: center;
+}
+
+.modalTitle {
+    width: 100%;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.modalTitle__title {
+    height: 20px;
+    width: 250px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modalTitle__subtitle {
+    margin-top: 20px;
+
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.buttonClose {
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: #92C46D;
+}
+
+.modalFormulaPreview {
+    width: 100%;
+    height: 70px;
+
+    margin-top: 30px;
+    padding: 15px 25px;
+
+    background-color: #E9F4DF;
+
+    border-radius: 10px;
+}
+
+.modalButtons {
+    width: 100%;
+
+    flex-direction: row;
+    justify-content: space-around;
+
+    margin-top: 30px;
+}
+
+.modalButtons__button {
+    width: 45%;
+    height: 60px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #92C46D;
+    border-radius: 10px;
+}
+
+.modalButtons__button__text {
+    font-size: 16px;
+    font-weight: 500;
+}

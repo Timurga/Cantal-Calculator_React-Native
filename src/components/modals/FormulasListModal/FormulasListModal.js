@@ -1,22 +1,24 @@
-import React, { useEffect } from 'react';
-import { Modal, Pressable, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 
 import styles from './formulaListModal.css'
 import CrossSignSVG from '../../SVG/CrossSignSVG';
 import ScalesSVG from '../../SVG/ScalesSVG';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { fetchStorage } from '../../../utils/fetchStorage';
 
 const FormulasListModal = ({ visible, onClose }) => {
-    const isEmpty = true
+    const [isContainerEmpty, setIsContainerEmpty] = useState(true)
+    const [containerContent, setContainerContent] = useState([])
 
     useEffect(() => {
-        const fetchStorage = async () => {
-            const data = await AsyncStorage.getItem('key')
-            console.log(data);
-        }
+        const fetchData = async () => {
+            const { containerContent, isContainerEmpty } = await fetchStorage();
+            setContainerContent([...containerContent, containerContent]);
+            setIsContainerEmpty(isContainerEmpty);
+        };
+        fetchData();
+    });
 
-        fetchStorage().catch(console.error)
-    })
 
     return (
         <Modal
@@ -40,14 +42,31 @@ const FormulasListModal = ({ visible, onClose }) => {
                         </Pressable>
                     </View>
 
-                {
-                    isEmpty 
-                    ? <View style={styles.emptyMainContainer}>
-                        <ScalesSVG />
-                        <Text style={styles.emptyMainContainer__text}>Вы еще не создали ни одной формулы</Text>
-                    </View>
-                    : <View style={styles.mainContainer}></View>
-                }
+                    {
+                        isContainerEmpty
+                            ? <View style={styles.emptyMainContainer}>
+                                <ScalesSVG />
+                                <Text style={styles.emptyMainContainer__text}>Вы еще не создали ни одной формулы</Text>
+                            </View>
+                            : <ScrollView style={{ width: '100%' }} showsVerticalScrollIndicator={false}>
+                                <View style={styles.mainContainer}>
+                                    {
+                                        containerContent.map((item) => {
+                                            if (typeof item.formulaName !== 'string' || typeof item.formulaName === 'undefined') {
+                                                return null;
+                                            } else {
+                                                return (
+                                                    <Pressable key={item.id} style={styles.formulaContainer}>
+                                                        <Text style={styles.formulaContainer__title}>{null ? '' : item.formulaName}</Text>
+                                                        <Text style={styles.formulaContainer__formula}>{item.formulaShow}</Text>
+                                                    </Pressable>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </View>
+                            </ScrollView>
+                    }
                 </View>
             </View>
         </Modal>

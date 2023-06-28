@@ -20,7 +20,7 @@ export default function App() {
         activeColor='#0b4028'
         inactiveColor='#198C4F'
         shifting={true}
-        barStyle={{ borderRadius: 10 }}
+        barStyle={{ borderRadius: 10, backgroundColor: '#fff' }}
       >
         <Tab.Screen
           name="CalculatingScreen"

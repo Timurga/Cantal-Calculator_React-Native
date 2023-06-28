@@ -41,9 +41,12 @@ const FormulaCreate = ({ visible, onClose }) => {
             const jsonValue = JSON.stringify({
                 formulaShow: formula,
                 formulaCalculation: formulaCalc,
-                formulaName: formulaName
+                formulaName: formulaName,
+                id: `file_${Date.now()}`
             })
             await AsyncStorage.setItem(`file_${Date.now()}`, jsonValue)
+            
+            onClose()
 
             Alert.alert('Создание формулы', 'Создано успешно', [
                 {
@@ -53,6 +56,10 @@ const FormulaCreate = ({ visible, onClose }) => {
                 },
                 { text: 'OK', onPress: () => console.log('Формула создана') },
             ]);
+
+            setFormula('')
+            setFormulaCalc('')
+            setFormulaName('Новая формула')
         } catch (e) {
             Alert.alert('Создание формулы', 'Ошибка', [
                 {
