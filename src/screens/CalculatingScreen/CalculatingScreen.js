@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, TouchableOpacity, View, Text, Alert } from "react-native";
 
-import styles from '../styles.css';
+import styles from './calculatingScreen.css';
 import BackgroundSVG from '../../components/SVG/BackgroundSVG';
 import BurgerMenuSVG from '../../components/SVG/BurgerMenuSVG';
 import PlusSVG from '../../components/SVG/PlusSVG';
@@ -12,6 +12,7 @@ import ItemRemoveButton from '../../components/UI/itemRemoveButton/ItemRemoveBut
 import FormulaSelectButton from '../../components/UI/formulaSelectButton/FormulaSelectButton';
 import InputUI from '../../components/UI/input/InputUI';
 import RadioButtonUI from '../../components/UI/radioButton/RadioButtonUI';
+import ButtonUI from '../../components/UI/button/ButtonUI';
 
 
 const CalculatingScreen = () => {
@@ -191,9 +192,7 @@ const CalculatingScreen = () => {
                         </FormulaSelectButton>
                     </View>
 
-                    <TouchableOpacity activeOpacity={0.8} style={styles.calculateButton} onPress={() => handleCalculate(protein, type, priceWithoutNDS, fat)}>
-                        <Text style={styles.buttonText}>Рассчитать</Text>
-                    </TouchableOpacity>
+                    <ButtonUI onClick={() => handleCalculate(protein, type, priceWithoutNDS, fat)}>Рассчитать</ButtonUI>
                 </View>
             </View>
         </ScrollView>

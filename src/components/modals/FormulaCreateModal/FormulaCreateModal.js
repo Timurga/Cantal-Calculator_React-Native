@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Alert, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { Switch, TextInput } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import styles from './formulaCreateModal.css'
 import CrossSignSVG from '../../SVG/CrossSignSVG';
-import KeyboardButton from './KeyboardButton';
-import ButtonUI from '../../UI/ButtonUI';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Numpad from './Numpad';
-import Keyboard from './Keyboard';
+import ButtonUI from '../../UI/button/ButtonUI';
+import KeyboardUI from '../../UI/calculator/KeyboardUI';
+import NumpadUI from '../../UI/calculator/NumpadUI';
 
 const FormulaCreate = ({ visible, onClose }) => {
     const [formula, setFormula] = useState('')
@@ -85,7 +85,7 @@ const FormulaCreate = ({ visible, onClose }) => {
                         <Text>{formula === '' ? 'Начните набирать формулу' : formula}</Text>
                     </View>
                     <ScrollView style={{ width: '100%' }} showsVerticalScrollIndicator={false}>
-                        <Keyboard handleClear={handleClear} handleClearAll={handleClearAll} handlePress={handlePress}/>
+                        <KeyboardUI handleClear={handleClear} handleClearAll={handleClearAll} handlePress={handlePress}/>
                         
                         <View style={styles.separator}></View>
 
@@ -97,7 +97,7 @@ const FormulaCreate = ({ visible, onClose }) => {
 
                             {
                                 isSwitchOn
-                                    ? <Numpad onPress={handlePress}/>
+                                    ? <NumpadUI onPress={handlePress}/>
                                     : <View></View>
                             }
                         </View>

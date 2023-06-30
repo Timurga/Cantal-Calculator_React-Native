@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../screens/styles.css';
+import styles from './buttonUI.css';
 import { Text, TouchableOpacity } from 'react-native';
 
 const ButtonUI = ({ children, onClick }) => {

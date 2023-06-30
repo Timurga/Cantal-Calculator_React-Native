@@ -1,0 +1,14 @@
+.calculateButton {
+    width: 100%;
+    align-items: center;
+    padding: 25px 0;
+    margin-top: 20px;
+    background-color: #198C4F;
+    border: 1px solid #198C4F;
+    border-radius: 10px;
+}
+
+.buttonText {
+    font-size: 14px;
+    color: #ffffff;
+}

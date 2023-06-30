@@ -10,7 +10,7 @@ import FormulaSelectDelete from "../../components/modals/FormulaSelectDelete/For
 import DeleteConfirmModal from "../../components/modals/deleteConfirmModal/DeleteConfirmModal";
 import FormulaListItem from "../../components/UI/formulaListItem/FormulaListItem";
 
-const FormulasScreen = ({ update }) => {
+const FormulasScreen = () => {
     const [isContainerEmpty, setIsContainerEmpty] = useState(true)
     const [containerContent, setContainerContent] = useState([])
     const [deleteConfirmModal, setDeleteConfirmModal] = useState(null)
@@ -72,7 +72,7 @@ const FormulasScreen = ({ update }) => {
                                                     name={item.formulaName}
                                                     formula={item.formulaShow}
                                                     pressable={false}
-                                                    children={<FormulaSelectDelete key={index - 1} deleteItem={(id) => handleDelete(id)} id={item.id} />}
+                                                    children={<FormulaSelectDelete key={index} deleteItem={(id) => handleDelete(id)} id={item.id} />}
                                                 />
                                                 {deleteConfirmModal && (
                                                     <DeleteConfirmModal

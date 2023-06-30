@@ -54,46 +54,6 @@
     margin: 40px 0;
 }
 
-.constructorKeyboard {
-    width: 100%;
-    flex-wrap: wrap;
-}
-
-.constructorKeyboard_line {
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 10px;
-}
-
-.constructorKeyboardButton_small {
-    align-items: center;
-    justify-content: center;
-    flex-basis: 55px;
-
-    min-width: 22%;
-    height: 60px;
-    
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-.constructorKeyboardButton_large {
-    align-items: center;
-    justify-content: center;
-    flex-basis: 60px;
-
-    min-width: 47%;
-    height: 60px;
-    
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-.keyboardButtonText {
-    font-size: 18px;
-    font-weight: 500;
-}
-
 .numpadKeyboard {
     width: 100%;
     flex-direction: column;

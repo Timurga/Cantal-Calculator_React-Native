@@ -1,0 +1,101 @@
+.scrollView {
+    flex-direction: column;
+    background-color: #198c4f;
+    padding-top: 100px;
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 0 25px;
+}
+
+.titleContainer {
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 30;
+}
+
+.titleText {
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.subtitleText {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 300;
+    margin-top: 40px;
+}
+
+.calculatedFormulasContainer {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.calculatedFormulasItem {
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.calculatedFormulasItem__text {
+    font-size: 16px;
+    color: #ffffff
+}
+
+.mainContainer {
+    padding: 25px 0;
+    padding-bottom: 120px;
+
+    border-radius: 20px;
+    
+    background-color: #E9F4DF;
+}
+
+.inputsRowContainer {
+    height: 40px;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.formulaListText {
+    margin-bottom: 20px;
+
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.formulaSelectContainer {
+    justify-content: space-between;
+    flex-direction: row;
+    border: 1px #92C46D solid;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.formulaSelectContainer__filledList {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border: 0;
+
+}
+
+.separator {
+    height: 100%;
+    width: 1px;
+    border-right-width: 1px;
+    border-right-color: #92C46D;
+}
