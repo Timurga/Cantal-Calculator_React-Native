@@ -1,18 +1,18 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { useState } from 'react';
 
 import CalculatingScreen from './src/screens/CalculatingScreen/CalculatingScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
 import FormulasScreen from './src/screens/FormulasScreen/FormulasScreen';
-import AboutScreen from './src/screens/AboutScreen';
+import AboutScreen from './src/screens/AboutScreen/AboutScreen';
 import CalculatingTabSVG from './src/components/SVG/CalculatingTabSVG';
 import FormulasTabSVG from './src/components/SVG/FormulasTabSVG';
-import SettingsTabSVG from './src/components/SVG/SettingsTabSVG';
 import AboutTabSVG from './src/components/SVG/AboutTabSVG';
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
+  const [data, setData] = useState(null)
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -28,7 +28,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Расчет',
             tabBarIcon: ({ color }) => (
-              <CalculatingTabSVG stroke={color}/>
+              <CalculatingTabSVG stroke={color} />
             )
           }}
         />
@@ -39,18 +39,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Формулы',
             tabBarIcon: ({ color }) => (
-              <FormulasTabSVG stroke={color}/>
-            )
-          }}
-        />
-
-        <Tab.Screen
-          name="SettingsScreen"
-          component={SettingsScreen}
-          options={{
-            tabBarLabel: 'Настройки',
-            tabBarIcon: ({ color }) => (
-              <SettingsTabSVG stroke={color}/>
+              <FormulasTabSVG stroke={color} />
             )
           }}
         />
@@ -61,7 +50,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Канталь',
             tabBarIcon: ({ color }) => (
-              <AboutTabSVG stroke={color}/>
+              <AboutTabSVG stroke={color} />
             )
           }}
         />

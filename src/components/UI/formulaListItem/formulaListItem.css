@@ -1,0 +1,24 @@
+.formulaContainer {
+    width: 100%;
+
+    margin-bottom: 10px;
+    padding: 30px 25px;
+
+    border-radius: 10px;
+
+    background-color: #fff;
+    color:#0B4028;
+}
+
+.formulaContainer__title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.formulaContainer__formula {
+    margin-top: 10px;
+
+    font-size: 14px;
+    line-height: 15px;
+}

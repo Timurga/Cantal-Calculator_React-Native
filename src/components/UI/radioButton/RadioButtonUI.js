@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from '../styles.css';
+import styles from './radioButton.css';
 import { View, TouchableOpacity, Text } from 'react-native';
 
-const CalculatingScreenRadio = ({ children, value, setValue }) => {
+const RadioButtonUI = ({ children, value, setValue }) => {
     return (
         <View style={styles.textInputContainer}>
-            <Text style={styles.containerText}>{children}</Text>
+            <Text>{children}</Text>
             <TouchableOpacity
                 onPress={() => setValue(prevType => !prevType)}
                 activeOpacity={0.7}
@@ -26,4 +26,4 @@ const CalculatingScreenRadio = ({ children, value, setValue }) => {
     );
 }
 
-export default CalculatingScreenRadio;
+export default RadioButtonUI;

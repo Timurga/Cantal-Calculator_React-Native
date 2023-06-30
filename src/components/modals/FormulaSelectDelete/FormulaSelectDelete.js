@@ -3,12 +3,12 @@ import styles from './formulaSelectDelete.css'
 import { Pressable, Text, TouchableHighlight, View } from 'react-native';
 import DotsSVG from '../../SVG/DotsSVG';
 
-const FormulaSelectDelete = ({ deleteItem }) => {
+const FormulaSelectDelete = ({ deleteItem, id }) => {
     const [showModal, setShowModal] = useState(false)
 
     const handleDelete = () => {
         setShowModal(false)
-        deleteItem()
+        deleteItem(id)
     }
 
     return (

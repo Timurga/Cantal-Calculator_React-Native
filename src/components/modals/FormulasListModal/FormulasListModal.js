@@ -5,19 +5,27 @@ import styles from './formulaListModal.css'
 import CrossSignSVG from '../../SVG/CrossSignSVG';
 import ScalesSVG from '../../SVG/ScalesSVG';
 import { fetchStorage } from '../../../utils/fetchStorage';
+import FormulaListItem from '../../UI/formulaListItem/FormulaListItem';
 
-const FormulasListModal = ({ visible, onClose }) => {
+const FormulasListModal = ({ visible, onClose, onChoose }) => {
     const [isContainerEmpty, setIsContainerEmpty] = useState(true)
     const [containerContent, setContainerContent] = useState([])
 
     useEffect(() => {
-        const fetchData = async () => {
-            const { containerContent, isContainerEmpty } = await fetchStorage();
-            setContainerContent([...containerContent, containerContent]);
-            setIsContainerEmpty(isContainerEmpty);
-        };
-        fetchData();
-    });
+        const count = setInterval(() => {
+            const fetchData = async () => {
+                const { containerContent, isContainerEmpty } = await fetchStorage();
+                setContainerContent([...containerContent, containerContent]);
+                setIsContainerEmpty(isContainerEmpty);
+            };
+            fetchData()
+        }, 1000)
+        return () => clearInterval(count)
+    }, []);
+
+    const handleChoose = (id, name, formula, calc) => {
+        onChoose(id, name, formula, calc)
+    }
 
 
     return (
@@ -36,7 +44,7 @@ const FormulasListModal = ({ visible, onClose }) => {
                     <View style={styles.modalTitle}>
                         <Text style={styles.modalTitleText}>Выбрать из готовых</Text>
                         <Pressable
-                            style={[styles.buttonClose]}
+                            style={styles.buttonClose}
                             onPress={onClose}>
                             <CrossSignSVG stroke='#fff' />
                         </Pressable>
@@ -52,14 +60,18 @@ const FormulasListModal = ({ visible, onClose }) => {
                                 <View style={styles.mainContainer}>
                                     {
                                         containerContent.map((item) => {
-                                            if (typeof item.formulaName !== 'string' || typeof item.formulaName === 'undefined') {
+                                            if (typeof item.formulaName !== 'string') {
                                                 return null;
                                             } else {
                                                 return (
-                                                    <Pressable key={item.id} style={styles.formulaContainer}>
-                                                        <Text style={styles.formulaContainer__title}>{null ? '' : item.formulaName}</Text>
-                                                        <Text style={styles.formulaContainer__formula}>{item.formulaShow}</Text>
-                                                    </Pressable>
+                                                    <FormulaListItem
+                                                        key={item.id}
+                                                        id={item.id}
+                                                        name={item.formulaName}
+                                                        formula={item.formulaShow}
+                                                        pressable={true}
+                                                        onPress={() => handleChoose(item.id, item.formulaName, item.formulaShow, item.formulaCalculation)}
+                                                    />
                                                 )
                                             }
                                         })

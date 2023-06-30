@@ -50,13 +50,12 @@
 }
 
 .constructorContainer {
-    margin-top: 40px;
+    align-items: center;
+    margin: 40px 0;
 }
 
 .constructorKeyboard {
     width: 100%;
-    margin-top: 40px;
-    height: 280px;
     flex-wrap: wrap;
 }
 
@@ -69,9 +68,9 @@
 .constructorKeyboardButton_small {
     align-items: center;
     justify-content: center;
-    flex-basis: 60px;
+    flex-basis: 55px;
 
-    min-width: 24%;
+    min-width: 22%;
     height: 60px;
     
     background-color: #fff;
@@ -83,7 +82,7 @@
     justify-content: center;
     flex-basis: 60px;
 
-    min-width: 49%;
+    min-width: 47%;
     height: 60px;
     
     background-color: #fff;
@@ -93,4 +92,19 @@
 .keyboardButtonText {
     font-size: 18px;
     font-weight: 500;
+}
+
+.numpadKeyboard {
+    width: 100%;
+    flex-direction: column;
+}
+
+.numpadActivate {
+    width: 100%;
+    margin: 20px 0;
+    padding: 0 10px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }

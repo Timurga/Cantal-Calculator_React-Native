@@ -1,33 +1,46 @@
-import { ScrollView, Text, View, Pressable, Button } from "react-native";
+import { ScrollView, Text, View } from "react-native";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { fetchStorage } from "../../utils/fetchStorage";
 
 import styles from './formulasScreen.css'
 import BackgroundSVG from "../../components/SVG/BackgroundSVG";
 import ScalesSVG from "../../components/SVG/ScalesSVG";
-import { useEffect, useState } from "react";
-import { fetchStorage } from "../../utils/fetchStorage";
 import FormulaSelectDelete from "../../components/modals/FormulaSelectDelete/FormulaSelectDelete";
 import DeleteConfirmModal from "../../components/modals/deleteConfirmModal/DeleteConfirmModal";
+import FormulaListItem from "../../components/UI/formulaListItem/FormulaListItem";
 
-const FormulasScreen = () => {
+const FormulasScreen = ({ update }) => {
     const [isContainerEmpty, setIsContainerEmpty] = useState(true)
     const [containerContent, setContainerContent] = useState([])
-    const [deleteConfirmModal, setDeleteConfirmModal] = useState(false)
+    const [deleteConfirmModal, setDeleteConfirmModal] = useState(null)
+    const [modalData, setModalData] = useState({});
 
     useEffect(() => {
-        const fetchData = async () => {
-            const { containerContent, isContainerEmpty } = await fetchStorage();
-            setContainerContent(containerContent);
-            setIsContainerEmpty(isContainerEmpty);
-        };
-        fetchData()
-    }, [containerContent]);
+        const interval = setInterval(() => {
+            const fetchData = async () => {
+                const { containerContent, isContainerEmpty } = await fetchStorage();
+                setContainerContent(containerContent);
+                setIsContainerEmpty(isContainerEmpty);
+            };
 
-    const handleDelete = () => {
-        setDeleteConfirmModal(true)
+            fetchData()
+        }, 1500)
+    }, [modalData])
+
+    const searchItemInStorage = async (id) => {
+        const data = await AsyncStorage.getItem(`${id}`)
+        setModalData(JSON.parse(data))
+    }
+
+    const handleDelete = (id) => {
+        setDeleteConfirmModal(id)
+        searchItemInStorage(id)
     }
 
     const onCloseDeleteConfirmModal = () => {
-        setDeleteConfirmModal(false)
+        setDeleteConfirmModal(null)
+        setModalData({})
     }
 
     return (
@@ -47,23 +60,32 @@ const FormulasScreen = () => {
                         </View>
                         : <View>
                             {
-                                containerContent.map((item) => {
+                                containerContent.map((item, index) => {
                                     if (typeof item.formulaName !== 'string') {
                                         return
                                     } else {
                                         return (
-                                            <Pressable key={item.id} style={styles.formulaContainer}>
-                                                <Text style={styles.formulaContainer__title}>{item.formulaName}</Text>
-                                                <Text style={styles.formulaContainer__formula}>{item.formulaShow}</Text>
-                                                <FormulaSelectDelete deleteItem={() => handleDelete()} />
-                                                <DeleteConfirmModal
-                                                    visible={deleteConfirmModal}
-                                                    onClose={onCloseDeleteConfirmModal}
+                                            <>
+                                                <FormulaListItem
+                                                    key={item.id}
                                                     id={item.id}
                                                     name={item.formulaName}
                                                     formula={item.formulaShow}
+                                                    pressable={false}
+                                                    children={<FormulaSelectDelete key={index - 1} deleteItem={(id) => handleDelete(id)} id={item.id} />}
                                                 />
-                                            </Pressable>
+                                                {deleteConfirmModal && (
+                                                    <DeleteConfirmModal
+                                                        key={index}
+                                                        visible={true}
+                                                        onClose={onCloseDeleteConfirmModal}
+                                                        id={modalData?.id}
+                                                        name={modalData?.formulaName}
+                                                        formula={modalData?.formulaShow}
+                                                    />
+                                                )}
+
+                                            </>
                                         )
                                     }
                                 })

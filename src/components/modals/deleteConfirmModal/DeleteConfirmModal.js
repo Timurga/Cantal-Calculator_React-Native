@@ -2,7 +2,6 @@ import React from 'react';
 import { Alert, Modal, Pressable, Text, View } from 'react-native';
 
 import styles from './deleteConfirmModal.css'
-import CrossSignSVG from '../../SVG/CrossSignSVG';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DeleteConfirmModal = ({ visible, onClose, id, name, formula }) => {

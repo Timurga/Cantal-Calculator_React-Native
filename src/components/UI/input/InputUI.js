@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import styles from '../styles.css'
+import styles from './inputUI.css'
 
-const CalculatingScreenInput = ({ affix, children, value, setValue }) => {
+const InputUI = ({ affix, children, value, setValue }) => {
     return (
         <View style={styles.textInputContainer}>
-            <Text style={styles.containerText}>{children}</Text>
+            <Text>{children}</Text>
             <TextInput
                 mode='outlined'
                 keyboardType='numeric'
@@ -20,4 +20,4 @@ const CalculatingScreenInput = ({ affix, children, value, setValue }) => {
     );
 }
 
-export default CalculatingScreenInput;
+export default InputUI;

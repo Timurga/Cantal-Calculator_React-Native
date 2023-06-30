@@ -1,0 +1,21 @@
+.formulaSelectItem {
+    width: 50%;
+    padding: 20px;
+}
+
+.formulaSelectItem__filledList {
+    padding: 10px;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+}
+
+.containerText {
+    font-size: 14px;
+    color: #0B4028;
+    margin-top: 20px;
+}
+
+.containerText__filledList {
+    margin-top: 0;
+}
