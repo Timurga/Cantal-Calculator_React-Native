@@ -17,15 +17,17 @@ const FormulasScreen = () => {
     const [modalData, setModalData] = useState({});
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            const fetchData = async () => {
-                const { containerContent, isContainerEmpty } = await fetchStorage();
-                setContainerContent(containerContent);
-                setIsContainerEmpty(isContainerEmpty);
-            };
+        const fetchData = async () => {
+            const { containerContent, isContainerEmpty } = await fetchStorage()
+            setContainerContent([...containerContent, containerContent])
+            setIsContainerEmpty(isContainerEmpty)
+        };
+        
+        fetchData()
 
-            fetchData()
-        }, 1500)
+        const interval = setInterval(fetchData, 1500)
+
+        return () => clearInterval(interval)
     }, [modalData])
 
     const searchItemInStorage = async (id) => {

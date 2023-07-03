@@ -10,17 +10,19 @@ const DeleteConfirmModal = ({ visible, onClose, id, name, formula }) => {
         onClose()
 
         try {
-            await AsyncStorage.removeItem(`${id}`)
+            await AsyncStorage.removeItem(`${id}`);
 
             Alert.alert('Удаление формулы', 'Успешно удалено', [
-                { text: 'OK', onPress: () => console.log('Формула удалена') },
+                { text: 'OK' },
             ]);
+
         } catch (e) {
             console.log(e)
 
             Alert.alert('Удаление формулы', 'Неудачно', [
-                { text: 'OK', onPress: () => console.log('Ошибка') },
+                { text: 'OK' },
             ]);
+
         }
     }
 
@@ -29,10 +31,7 @@ const DeleteConfirmModal = ({ visible, onClose, id, name, formula }) => {
             animationType="fade"
             transparent={true}
             visible={visible}
-            onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-                onClose();
-            }}>
+        >
             <View style={styles.backgroundOpacity}>
                 <View style={styles.modalView}>
                     <View style={styles.modalTitle}>
@@ -42,7 +41,7 @@ const DeleteConfirmModal = ({ visible, onClose, id, name, formula }) => {
 
                     <View style={styles.modalFormulaPreview}>
                         <Text>{name}</Text>
-                        <Text style={{fontSize: 12, marginTop: 5}}>{formula}</Text>
+                        <Text style={{ fontSize: 12, marginTop: 5 }}>{formula}</Text>
                     </View>
 
                     <View style={styles.modalButtons}>
@@ -51,8 +50,8 @@ const DeleteConfirmModal = ({ visible, onClose, id, name, formula }) => {
 
                         </Pressable>
 
-                        <Pressable style={[styles.modalButtons__button, {borderColor: '#198C4F', backgroundColor: '#198C4F'}]} onPress={handleConfirm}>
-                            <Text style={[styles.modalButtons__button__text, {color: '#ffffff'}]}>Удалить</Text>
+                        <Pressable style={[styles.modalButtons__button, { borderColor: '#198C4F', backgroundColor: '#198C4F' }]} onPress={handleConfirm}>
+                            <Text style={[styles.modalButtons__button__text, { color: '#ffffff' }]}>Удалить</Text>
                         </Pressable>
                     </View>
                 </View>

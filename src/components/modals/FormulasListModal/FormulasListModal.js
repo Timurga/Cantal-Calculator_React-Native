@@ -12,15 +12,17 @@ const FormulasListModal = ({ visible, onClose, onChoose }) => {
     const [containerContent, setContainerContent] = useState([])
 
     useEffect(() => {
-        const count = setInterval(() => {
-            const fetchData = async () => {
-                const { containerContent, isContainerEmpty } = await fetchStorage();
-                setContainerContent([...containerContent, containerContent]);
-                setIsContainerEmpty(isContainerEmpty);
-            };
-            fetchData()
-        }, 1000)
-        return () => clearInterval(count)
+        const fetchData = async () => {
+            const { containerContent, isContainerEmpty } = await fetchStorage()
+            setContainerContent([...containerContent, containerContent])
+            setIsContainerEmpty(isContainerEmpty)
+        };
+        
+        fetchData()
+
+        const interval = setInterval(fetchData, 1500)
+
+        return () => clearInterval(interval)
     }, []);
 
     const handleChoose = (id, name, formula, calc) => {
@@ -33,10 +35,6 @@ const FormulasListModal = ({ visible, onClose, onChoose }) => {
             animationType="slide"
             transparent={true}
             visible={visible}
-            onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-                onClose();
-            }}
         >
 
             <View style={styles.centeredView}>

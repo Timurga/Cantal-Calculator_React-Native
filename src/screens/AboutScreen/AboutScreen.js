@@ -1,9 +1,11 @@
 import { View } from "react-native";
+import styles from './aboutScreen.css'
+import AboutScreenLogo from "../../components/SVG/AboutScreenLogo";
 
 const AboutScreen = () => {
     return (
-        <View>
-            
+        <View style={styles.container}>
+            <AboutScreenLogo />
         </View>
     );
 }
