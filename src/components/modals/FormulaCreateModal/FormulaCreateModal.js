@@ -49,7 +49,7 @@ const FormulaCreate = ({ visible, onClose }) => {
             onClose()
 
             Alert.alert('Создание формулы', 'Создано успешно', [
-                { text: 'OK'},
+                { text: 'OK' },
             ]);
 
             setFormula('')
@@ -57,7 +57,7 @@ const FormulaCreate = ({ visible, onClose }) => {
             setFormulaName('Новая формула')
         } catch (e) {
             Alert.alert('Создание формулы', 'Ошибка', [
-                { text: 'OK'},
+                { text: 'OK' },
             ]);
         }
     }
@@ -85,8 +85,8 @@ const FormulaCreate = ({ visible, onClose }) => {
                         <Text>{formula === '' ? 'Начните набирать формулу' : formula}</Text>
                     </View>
                     <ScrollView style={{ width: '100%' }} showsVerticalScrollIndicator={false}>
-                        <KeyboardUI handleClear={handleClear} handleClearAll={handleClearAll} handlePress={handlePress}/>
-                        
+                        <KeyboardUI handleClear={handleClear} handleClearAll={handleClearAll} handlePress={handlePress} />
+
                         <View style={styles.separator}></View>
 
                         <View style={styles.numpadKeyboard}>
@@ -97,7 +97,7 @@ const FormulaCreate = ({ visible, onClose }) => {
 
                             {
                                 isSwitchOn
-                                    ? <NumpadUI onPress={handlePress}/>
+                                    ? <NumpadUI onPress={handlePress} />
                                     : <View></View>
                             }
                         </View>

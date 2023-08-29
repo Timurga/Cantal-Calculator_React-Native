@@ -54,7 +54,7 @@ const CalculatingScreen = () => {
             return
         }
 
-        if(calculatedFormulas.length !== 0) {
+        if (calculatedFormulas.length !== 0) {
             const editCalc = calculatedFormulas.filter(item => item.id !== id)
             setCalculatedFormulas(editCalc)
         }
@@ -92,7 +92,8 @@ const CalculatingScreen = () => {
 
                 const sum = new Function('protein', 'sort', 'fat', 'baseValue', `return ${item.calc}`)
 
-                calculatedResults.push({ sum: sum(protein, updatedSort, fat, baseValue), name: item.name, id: item.id })
+                calculatedResults.push({ sum: sum(Number(protein), Number(updatedSort), Number(fat), Number(baseValue)), name: item.name, id: item.id })
+                console.log(item.calc);
             })
             setCalculatedFormulas([...calculatedFormulas, ...calculatedResults])
         } catch (e) {
